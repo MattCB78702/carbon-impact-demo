@@ -86,7 +86,7 @@
         <div>${(pr.criteriaFit || []).map(f => `<span class="fit">${f}</span>`).join("")}</div>
         <div class="alloc"><span class="t">${fmt(pr.tonnes)} t</span><span class="p">${pr.priceBand} · indicative</span></div>
         <p class="story">${pr.story}</p>
-        <div class="facts"><b>Registry:</b> <a href="${pr.registryUrl}" target="_blank" rel="noopener">${pr.registry}</a> · <b>Methodology:</b> ${pr.methodology} · <b>Rating:</b> ${pr.rating}</div>
+        <div class="facts"><b>Registry:</b> <a href="${pr.registryUrl}" target="_blank" rel="noopener">${pr.registry}</a> · <b>Methodology:</b> ${pr.methodology}${pr.rating && pr.rating !== "—" ? ` · <b>Rating:</b> ${pr.rating}` : ""}</div>
       </div>`;
   }
   function chipText(pr) { return pr.id.replace(pr.registryShort, "").trim() || pr.id; }
