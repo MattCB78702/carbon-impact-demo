@@ -1,0 +1,26 @@
+/* Carbon Impact — design tokens per CarbonBetter style guide (full system lands in Task 3) */
+:root {
+  --blue: #3347FF;
+  --navy: #1B2A6B;
+  --lime: #7FD93A;
+  --orange: #FF8C00;
+  --bg: #F5F5F5;
+  --gray: #AAAAAA;
+  --dark: #333333;
+  --ink: #1c2330;
+  --muted: #5c6572;
+  --line: #dfe3ea;
+  --card: #ffffff;
+  --sans: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.55; }
+
+#app { display: flex; min-height: 100vh; }
+#sidebar { width: 232px; flex-shrink: 0; background: var(--navy); color: #fff; }
+#main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+#topbar { background: var(--card); border-bottom: 1px solid var(--line); padding: 14px 28px; }
+#view { flex: 1; padding: 28px; }
+#demofooter { padding: 10px 28px; font-family: var(--mono); font-size: 11px; color: var(--muted); border-top: 1px solid var(--line); }
