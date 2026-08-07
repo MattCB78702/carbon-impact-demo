@@ -2,14 +2,14 @@
 (function () {
   const D = window.DATA;
   const CAT = window.CATALOGUE || [];
-  const PRICES = window.PRICES || null;   // present only when prices.local.js is loaded
   const byKey = Object.fromEntries(CAT.map(p => [p.key, p]));
   const fmt = n => n.toLocaleString("en-US");
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-  // Real prices only when the gitignored local file is present; bands otherwise.
-  const priceOf = p => (PRICES && PRICES[p.key]) ? PRICES[p.key] : p.priceBand;
-  const priceIsReal = () => !!PRICES;
+  // Real prices only when the gitignored local file has been loaded; bands otherwise.
+  // Read at call time, since the local file loads asynchronously during boot.
+  const priceOf = p => (window.PRICES && window.PRICES[p.key]) ? window.PRICES[p.key] : p.priceBand;
+  const priceIsReal = () => !!window.PRICES;
 
   const SRC_LABEL = {
     registry: "Registry record", public: "Public reporting", catalogue: "Your catalogue",
@@ -387,6 +387,20 @@
   }
 
   window.addEventListener("hashchange", () => { render(); window.scrollTo(0, 0); });
-  chrome();
-  render();
+
+  function boot() { chrome(); render(); }
+
+  // Only a local session tries to load the confidential price file. The deployed
+  // build never requests it, so there is no 404 in a prospect's network tab and
+  // no hint that a private data file exists.
+  const isLocal = ["localhost", "127.0.0.1", ""].includes(location.hostname);
+  if (isLocal) {
+    const s = document.createElement("script");
+    s.src = "js/prices.local.js";
+    s.onload = boot;
+    s.onerror = boot;
+    document.head.appendChild(s);
+  } else {
+    boot();
+  }
 })();

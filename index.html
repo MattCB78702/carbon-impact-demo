@@ -21,9 +21,8 @@
   </div>
   <script src="js/data.js"></script>
   <script src="js/catalogue.js"></script>
-  <!-- Confidential real prices. Gitignored, so absent from the public deploy:
-       present locally = real prices shown, absent = indicative bands. -->
-  <script src="js/prices.local.js" onerror="void 0"></script>
+  <!-- js/prices.local.js (confidential real quotes, gitignored) is requested by
+       app.js only when running locally, so the public build never even asks for it. -->
   <script src="js/app.js"></script>
 </body>
 </html>
