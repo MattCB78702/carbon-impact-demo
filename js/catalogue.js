@@ -27,7 +27,7 @@ window.CATALOGUE = [
   },
   {
     "key": "s18",
-    "name": "Darkwood Forest Carbon Project",
+    "name": "Darkwoods Forest Carbon Project",
     "registry": "Verra (VCS607)",
     "vintage": "2021",
     "creditType": "Mixed",
@@ -327,6 +327,26 @@ window.CATALOGUE = [
     "description": "The project captures and destroys landfill methane at the Bi-County Landfill located at 3212 Dover Rd, Woodlawn, Tennessee, using an open flare and two engine-generator sets (Caterpillar 3520 C+ and 3516 A+) for controlled combustion. The Project has high-quality continuous monitoring. It uses continuous methane analyzers, calibrated flow meters, and real-time flare temperature tracking, exceeding standard spot-check monitoring typical of older landfill projects. Emission reductions are calculated using continuously metered landfill gas flow, verified methane concentration, default destruction efficiencies of 96% (flare) and 93.6% (engines), a 10% soil methane oxidation factor, and IPCC AR5 methane GWP values, with conservative exclusions for low-temperature periods. Co-benefits include improved local air quality through the destruction of hazardous landfill air pollutants, reduced public health risks for nearby communities, and the creation of permanent skilled jobs supporting landfill gas operations."
   },
   {
+    "key": "s23",
+    "name": "Carbon Labs Plugging of Alberta Orphaned Wells V2",
+    "registry": "American Carbon Registry (ACR 1093)",
+    "vintage": "2024",
+    "creditType": "Avoidance",
+    "category": "Methane capture",
+    "tech": "Plugging Orphan Oil and Gas Wells",
+    "location": "Alberta, Canada",
+    "country": "Canada",
+    "states": [],
+    "valueChainStates": [],
+    "methodology": "",
+    "verifier": "GHD Limited",
+    "quality": [],
+    "volume": "40,000",
+    "priceBand": "$15–25/t",
+    "priceLow": 18.65,
+    "description": "The project involves plugging one orphaned oil and gas well in the Municipal District of Red Deer County, Alberta, Canada to permanently prevent methane emissions from entering the atmosphere. Emissions reductions are confirmed through pre- and post-plugging methane measurements, demonstrating zero post-plugging emissions in accordance with the ACR Orphan Well Plugging Methodology. This is a very robust project, with proven quantifiable impact, community benefit and the ONLY player in the space of plugging O&G wells which takes responsibility for the well forever. They also work to ensure the well area matches the surrounding once they are done so if the well is in the middle of agricultural land, they plug it in such a way that the area can thereafter be used for agricultural purposes. The project delivers permanent methane abatement, producing immediate near-term climate benefits due to methane’s high short-term warming potential. Co benefits include land restoration, improved local air quality, reduced safety risks, and community benefits such as job creation and contribution to local causes via the generated revenue The Project contributes to the following UN SDGs: 03: Good Health and Well-Being; 09: Industry, Innovation and Infrastructure; 12: Responsible Consumption and Production; 13: Climate Action"
+  },
+  {
     "key": "s31",
     "name": "Clinton Landfill Gas Collection and Combustion Project",
     "registry": "Verra (VCS 318)",
@@ -349,26 +369,6 @@ window.CATALOGUE = [
     "priceBand": "$5–10/t",
     "priceLow": 8.25,
     "description": "The project captures and combusts methane from the Clinton Landfill in Clinton, Illinois using an expanded landfill gas collection system and two 1.6-MW engine-generator units, with excess gas destroyed via backup flaring. Methane flow and destruction are continuously monitored using mass flow meters, methane analyzers, thermocouple-verified flare temperatures, and electronic data logging consolidated on a weekly and monthly basis Co-benefits include improved local air quality through the destruction of hazardous air pollutants, reduced health risks for nearby communities, and the creation of permanent local jobs to support landfill gas operations. The Project contributes to the following UN SDGs: SDG 3 – Good Health and Well-Being SDG 7 – Affordable and Clean Energy SDG 8 – Decent Work and Economic Growth"
-  },
-  {
-    "key": "s23",
-    "name": "Crbon Labs Plugging of Alberta Orphaned Wells V2",
-    "registry": "American Carbon Registry (ACR 1093)",
-    "vintage": "2024",
-    "creditType": "Avoidance",
-    "category": "Methane capture",
-    "tech": "Plugging Orphan Oil and Gas Wells",
-    "location": "Alberta, Canada",
-    "country": "Canada",
-    "states": [],
-    "valueChainStates": [],
-    "methodology": "",
-    "verifier": "GHD Limited",
-    "quality": [],
-    "volume": "40,000",
-    "priceBand": "$15–25/t",
-    "priceLow": 18.65,
-    "description": "The project involves plugging one orphaned oil and gas well in the Municipal District of Red Deer County, Alberta, Canada to permanently prevent methane emissions from entering the atmosphere. Emissions reductions are confirmed through pre- and post-plugging methane measurements, demonstrating zero post-plugging emissions in accordance with the ACR Orphan Well Plugging Methodology. This is a very robust project, with proven quantifiable impact, community benefit and the ONLY player in the space of plugging O&G wells which takes responsibility for the well forever. They also work to ensure the well area matches the surrounding once they are done so if the well is in the middle of agricultural land, they plug it in such a way that the area can thereafter be used for agricultural purposes. The project delivers permanent methane abatement, producing immediate near-term climate benefits due to methane’s high short-term warming potential. Co benefits include land restoration, improved local air quality, reduced safety risks, and community benefits such as job creation and contribution to local causes via the generated revenue The Project contributes to the following UN SDGs: 03: Good Health and Well-Being; 09: Industry, Innovation and Infrastructure; 12: Responsible Consumption and Production; 13: Climate Action"
   },
   {
     "key": "s13",
@@ -570,7 +570,7 @@ window.CATALOGUE = [
   },
   {
     "key": "s24",
-    "name": "Prairie Pothole Avoided conversation of Grasslands and Shrublands",
+    "name": "Prairie Pothole Avoided Conversion of Grasslands and Shrublands",
     "registry": "American Carbon Registry (ACR 222)",
     "vintage": "2022+",
     "creditType": "Avoidance",

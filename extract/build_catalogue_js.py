@@ -53,6 +53,15 @@ CATEGORY = {
 
 BANDS = [(0, 5), (5, 10), (10, 15), (15, 20), (20, 25), (25, 30), (30, 40)]
 
+# Typos in the source deck's slide titles. Corrected here rather than by hand-editing
+# the generated file, so a regeneration does not silently reintroduce them.
+# "Darkwoods" is the project's real registered name; the deck's own body text uses it.
+NAME_FIXES = {
+    "Crbon Labs Plugging of Alberta Orphaned Wells V2": "Carbon Labs Plugging of Alberta Orphaned Wells V2",
+    "Prairie Pothole Avoided conversation of Grasslands and Shrublands": "Prairie Pothole Avoided Conversion of Grasslands and Shrublands",
+    "Darkwood Forest Carbon Project": "Darkwoods Forest Carbon Project",
+}
+
 
 def prices_in(text):
     """Only dollar-prefixed figures are prices. Volume tiers in these strings look
@@ -126,7 +135,7 @@ def main():
         prices[key] = r["price"]
         out.append({
             "key": key,
-            "name": r["name"],
+            "name": NAME_FIXES.get(r["name"], r["name"]),
             "registry": r["registry_id"],
             "vintage": r["vintage"],
             "creditType": credit_type_of(r["credit_type"], r["removal_flag"]),
