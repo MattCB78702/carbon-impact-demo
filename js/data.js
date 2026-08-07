@@ -1,278 +1,247 @@
-// Carbon Impact — ALL demo content lives in this one file.
-// Re-skin for another prospect by editing this file only.
+// Carbon Impact — company-specific content. The 26-project catalogue lives in catalogue.js.
 //
-// Data provenance:
-//  - New Belgium retirement history: REAL public registry records (ACR + Verra),
-//    verified against CarbonBetter's merged VCM dataset (207,881 retirements).
-//  - Proposed portfolio: projects from CarbonBetter's actual New Belgium catalogue
-//    (June 2026). Prices shown as indicative BANDS only — firm quotes live in the
-//    confidential catalogue, not on this public demo.
-//  - Peer comps: REAL named retirements from public registry data.
-//  - Contracts, audit trail, and forward-looking records: SAMPLE data, labeled.
+// Product purpose (Matt, 2026-08-07): this is a tool to UNDERSTAND and COMMUNICATE,
+// not to manage the procurement process. Four jobs: educate, select, benchmark,
+// communicate. CarbonBetter does the diligence; the platform makes it legible.
+//
+// Provenance rules enforced in the UI:
+//   registry  = real public registry record
+//   public    = the company's own public reporting
+//   catalogue = CarbonBetter's real June 2026 catalogue for this client
+//   market    = derived from our merged 5-registry dataset (207,881 retirements)
+//   sample    = illustrative, labelled in the interface
 window.DATA = {
   productName: "Carbon Impact",
   poweredBy: "CarbonBetter",
-  generated: "August 3, 2026",
   company: {
     name: "New Belgium Brewing",
     shortName: "New Belgium",
     context: "Fort Collins, CO · Asheville, NC · Certified B Corp",
   },
-  footerNote: "Demonstration workspace. Registry history and peer retirements are real public data; contracts, approvals, and forward records are sample data; pricing is shown as indicative bands only.",
+  footerNote: "Demonstration workspace. Registry records, peer retirements, and market figures are real public data. Pricing is shown as indicative bands; firm quotes stay in your catalogue.",
+
   nav: [
-    { id: "home",      label: "Portfolio", icon: "◧" },
-    { id: "footprint", label: "Footprint", icon: "◬" },
-    { id: "plan",      label: "Plan & Decide", icon: "◇" },
-    { id: "vault",     label: "Evidence Vault", icon: "▣" },
-    { id: "share",     label: "Share", icon: "➦" },
+    { id: "footprint", label: "Your Footprint" },
+    { id: "quality",   label: "Quality and Co-benefits" },
+    { id: "explore",   label: "Explore Credits" },
+    { id: "portfolio", label: "Your Portfolio" },
+    { id: "benchmark", label: "Benchmark" },
+    { id: "share",     label: "Share" },
   ],
 
-  // ---------- Footprint (public reporting + program coverage) ----------
+  // ---------------------------------------------------------------- Footprint
   footprint: {
+    headline: "Credits only mean something next to the number they are measured against.",
     total: 286000,
-    totalLabel: "≈286,000 t CO₂e",
+    totalLabel: "286,000",
     year: "2024",
-    source: "Public reporting (third-party aggregation of New Belgium disclosures). Replace with your GHG inventory for the live workspace.",
+    source: "public",
+    sourceNote: "Public reporting. The live workspace runs on your own greenhouse gas inventory.",
     scopes: [
-      { name: "Scope 1 — brewing operations (natural gas, fleet)", tonnes: 21100, share: 7.4 },
-      { name: "Scope 2 — purchased electricity", tonnes: 16200, share: 5.7 },
-      { name: "Scope 3 — supply chain (packaging, ingredients, logistics, retail)", tonnes: 248700, share: 86.9 },
+      { name: "Scope 3 — supply chain", detail: "Packaging, ingredients, logistics, retail refrigeration", tonnes: 248700, share: 86.9 },
+      { name: "Scope 1 — brewing operations", detail: "Natural gas, fleet", tonnes: 21100, share: 7.4 },
+      { name: "Scope 2 — purchased electricity", detail: "Grid power across both breweries", tonnes: 16200, share: 5.7 },
     ],
-    context: "New Belgium has said publicly that roughly 85% of the greenhouse gases in a beer's lifecycle come from the supply chain — glass, aluminum, barley, hops, refrigeration at retail.",
-    commitments: [
-      { text: "Reduce absolute Scope 1 + 2 emissions 55% by 2030 (2019 baseline)", source: "public target" },
-      { text: "Company-wide carbon neutrality by 2030", source: "public commitment" },
-      { text: "Fat Tire: PAS 2060 product carbon neutrality, certified by SCS Global Services (Feb 2024)", source: "public certification" },
-    ],
+    context: "New Belgium has said publicly that roughly 85% of the greenhouse gases in a beer's lifecycle come from the supply chain: glass, aluminium, barley, hops, and refrigeration at retail.",
     coverage: [
-      { label: "Fat Tire + Mountain Time brand program", covered: "Fully covered", detail: "Your 2024–25 retirements (15,000 t) were designated for these brands — the PAS 2060 pathway." },
-      { label: "Scope 1 + 2 (≈37,300 t)", covered: "≈27% of one year", detail: "The proposed 10,000 t portfolio equals about a quarter of annual operational emissions." },
-      { label: "Total footprint (≈286,000 t)", covered: "≈3.5% of one year", detail: "Credits are the last mile, not the plan. Reduction work carries the 2030 commitment; the credit program grows as the residual shrinks." },
+      { label: "Fat Tire and Mountain Time brand program", covered: "Fully covered", detail: "Your 2024 and 2025 retirements, 15,000 tonnes, were designated for these brands. This is the PAS 2060 pathway." },
+      { label: "Scope 1 and 2 combined, 37,300 t", covered: "27%", detail: "The proposed 10,000 tonne portfolio equals roughly a quarter of annual operational emissions." },
+      { label: "Total footprint, 286,000 t", covered: "3.5%", detail: "Credits are the last mile, not the plan. Reduction work carries the 2030 commitment; the credit program grows as the residual shrinks." },
     ],
-    trajectory: "The 2030 company-wide carbon-neutral commitment implies a credit program an order of magnitude larger than today's — which is why portfolio design, evidence, and claims discipline matter now.",
+    commitments: [
+      "Reduce absolute Scope 1 and 2 emissions 55% by 2030, against a 2019 baseline",
+      "Company-wide carbon neutrality by 2030",
+      "Fat Tire holds PAS 2060 product carbon neutrality, certified by SCS Global Services in February 2024",
+    ],
+    trajectory: "A company-wide neutral commitment by 2030 implies a credit program an order of magnitude larger than today's. That is why quality, evidence, and claims discipline are worth settling now, while the volumes are still small.",
   },
 
-  // ---------- REAL registry history (public data) ----------
+  // ---------------------------------------------- Real public retirement history
   history: [
-    {
-      date: "2025-08-29", registry: "American Carbon Registry", registryShort: "ACR",
-      tonnes: 10000, projectId: "ACR992", project: "HT HFC Reclamation Project Champaign 2023",
-      type: "Industrial Process Emissions", country: "US",
-      reason: "Retired on behalf of New Belgium Brewing Company for CY24 and CY25 Fat Tire Ale and Mountain Time Lager Emissions",
-      real: true,
-    },
-    {
-      date: "2024-12-20", registry: "American Carbon Registry", registryShort: "ACR",
-      tonnes: 5000, projectId: "ACR847", project: "HT HFC Reclamation Project Champaign 2022",
-      type: "Industrial Process Emissions", country: "US",
-      reason: "Retired on behalf of New Belgium Brewing Company for CY23 Fat Tire Ale and Mountain Time Lager Emissions",
-      real: true,
-    },
-    {
-      date: "2021-03-30", registry: "Verra", registryShort: "VCS",
-      tonnes: 597, projectId: "VCS 756", project: "Crow Lake Wind Emissions Reduction Project",
-      type: "Renewable energy", country: "United States",
-      reason: "Retired on behalf of New Belgium Brewing Company.",
-      real: true,
-    },
+    { date: "2025-08-29", registry: "American Carbon Registry", id: "ACR992", tonnes: 10000,
+      project: "HT HFC Reclamation Project Champaign 2023", type: "Industrial process emissions",
+      purpose: "Retired on behalf of New Belgium Brewing Company for CY24 and CY25 Fat Tire Ale and Mountain Time Lager Emissions" },
+    { date: "2024-12-20", registry: "American Carbon Registry", id: "ACR847", tonnes: 5000,
+      project: "HT HFC Reclamation Project Champaign 2022", type: "Industrial process emissions",
+      purpose: "Retired on behalf of New Belgium Brewing Company for CY23 Fat Tire Ale and Mountain Time Lager Emissions" },
+    { date: "2021-03-30", registry: "Verra", id: "VCS 756", tonnes: 597,
+      project: "Crow Lake Wind Emissions Reduction Project", type: "Renewable energy",
+      purpose: "Retired on behalf of New Belgium Brewing Company." },
   ],
 
-  // ---------- Purchasing criteria (from the actual CarbonBetter catalogue for New Belgium) ----------
-  criteria: [
-    { name: "Geography", detail: "USA, Canada, and Mexico only — prioritizing states in New Belgium's value chain: Montana, North Carolina, Michigan, Virginia, Colorado, Idaho, Washington." },
-    { name: "Project types", detail: "No renewable-energy credits (wind, solar, hydro). Limited forestry, reflecting historical preference." },
-    { name: "Quality bar", detail: "Latest methodologies and ICVCM Core Carbon Principles (CCP) approval prioritized, plus independent ratings (BeZero, Sylvera) where available." },
-    { name: "Removals", detail: "A measured share of removal credits included, balanced against price." },
-    { name: "Claims", detail: "Every purchase must support the Fat Tire and Mountain Time carbon-neutral program and survive legal review of public claims." },
-  ],
+  // ------------------------------------------------- Quality and Co-benefits
+  quality: {
+    headline: "What separates a credit worth buying from one worth avoiding.",
+    intro: "Every project in your catalogue was assessed against the same questions before it reached you. This page explains those questions, so the recommendation is something you can interrogate rather than something you have to trust.",
+    questions: [
+      { q: "Additionality", plain: "Would this have happened anyway?",
+        detail: "If the emissions reduction would have occurred without carbon finance, the credit represents nothing. Regulatory requirements, existing economics, and standard industry practice all have to be ruled out.",
+        example: "Refrigeration projects are assessed against what a developer would have installed anyway. Ultra-low-GWP systems cost more than the conventional default, which is what makes the credit real." },
+      { q: "Quantification", plain: "How do we know it is a tonne?",
+        detail: "The methodology defines how the reduction is measured against a counterfactual baseline. Continuously metered projects carry far less uncertainty than modelled ones.",
+        example: "Landfill gas is metered continuously: flow, methane concentration, and flare temperature. Soil carbon is modelled, which is why it carries a larger buffer." },
+      { q: "Permanence and reversal", plain: "Can the carbon come back out?",
+        detail: "Biological storage can reverse through fire, disease, harvest, or a change of ownership. Buffer pools and legal protections manage that risk. Industrial destruction cannot reverse: the molecule is gone.",
+        example: "Prairie Pothole grasslands are protected by permanent conservation easements. Nitrous oxide abatement has no reversal risk at all." },
+      { q: "Leakage", plain: "Did the emissions just move somewhere else?",
+        detail: "If protecting one forest pushes logging into the next valley, the net benefit shrinks. Methodologies estimate and deduct leakage.",
+        example: "Improved forest management projects deduct for harvest displaced onto other land." },
+      { q: "Safeguards and governance", plain: "Who benefits, and did they consent?",
+        detail: "Land-based projects affect people who live there. Free prior informed consent, benefit sharing, and grievance mechanisms separate credible projects from extractive ones.",
+        example: "The Northern Cheyenne project is on 100% Tribal-owned land and managed by the Nation itself, so the revenue stays with the community." },
+    ],
+    ratings: {
+      intro: "Three independent signals appear in your catalogue. They are not interchangeable.",
+      items: [
+        { name: "ICVCM Core Carbon Principles", what: "A threshold, not a score. The Integrity Council for the Voluntary Carbon Market assesses whether a methodology meets a baseline of integrity. A project is approved or it is not.", use: "The closest thing the market has to a floor. Useful for defending a purchase to a board." },
+        { name: "BeZero", what: "A risk rating, AAA down to D, expressing confidence that a credit achieves a tonne of avoidance or removal.", use: "Comparative. An A and a BBB in the same project type is a meaningful difference." },
+        { name: "Sylvera", what: "An independent rating agency scoring carbon accounting, additionality, permanence, and co-benefits separately.", use: "Useful when you want to see which dimension is weak rather than one blended grade." },
+      ],
+    },
+    avoidanceVsRemoval: {
+      intro: "The single distinction most likely to be raised by a journalist or an auditor.",
+      avoidance: "Stops emissions that would otherwise have happened. Landfill methane destroyed, refrigerant never released, nitrous oxide broken down. Cheaper, immediate, and does not reduce the stock of carbon already in the atmosphere.",
+      removal: "Takes carbon out of the atmosphere and stores it. Grassland soil, growing forest. More expensive, slower, and carries reversal risk, but it is what net zero frameworks increasingly require.",
+      guidance: "Most credible programs hold both, and disclose the split rather than blurring it. Your proposed portfolio is 35% removals by volume.",
+    },
+    coBenefits: {
+      intro: "The reason a project is worth talking about, and the reason to be careful how you talk about it.",
+      body: "Co-benefits are the effects beyond the tonne: household air quality, water, habitat, jobs, community income. They are usually why a project resonates with employees and customers. They are also the easiest thing to overstate, because they are rarely measured with the same rigour as the carbon.",
+      rule: "Claim a co-benefit only where the project documentation evidences it. Where a project is certified under CCB or SD VISta, that certification is the evidence. Where it is not, describe the activity rather than asserting the outcome.",
+    },
+    catalogueNote: "Of the 26 projects curated for you, 17 carry at least one independent quality signal, and 8 include removals.",
+  },
 
-  // ---------- Proposed portfolio (real catalogue projects; indicative price bands) ----------
+  // ------------------------------------------------------------- Your Portfolio
+  criteria: {
+    intro: "Everything below follows from what you told us mattered. These were the filters applied to the whole market before a single project was recommended.",
+    items: [
+      { name: "Geography", detail: "United States, Canada, and Mexico only, prioritising states in your value chain: Montana, North Carolina, Michigan, Virginia, Colorado, Idaho, and Washington.", effect: "Removed every international project, which is most of the market by volume." },
+      { name: "Project types", detail: "No renewable energy credits. Limited forestry, reflecting your stated preference.", effect: "Removed wind, solar, and hydro entirely, and capped forestry exposure." },
+      { name: "Quality bar", detail: "Latest methodologies and ICVCM Core Carbon Principles approval prioritised, with independent ratings where available.", effect: "17 of 26 shortlisted projects carry an independent quality signal." },
+      { name: "Removals", detail: "A measured share of removals, balanced against price.", effect: "35% of the proposed volume is removals rather than avoidance alone." },
+      { name: "Claims", detail: "Every purchase must support the Fat Tire and Mountain Time program and survive legal review of the public claims made about it.", effect: "Shaped the wording in the Share tab, not just the project list." },
+    ],
+  },
   portfolio: {
     year: "2026–27",
     totalTonnes: 10000,
     spendBand: "$120k–$160k",
     projects: [
-      {
-        id: "VCS 1960", registry: "Verra", registryShort: "VCS",
-        registryUrl: "https://registry.verra.org/app/projectDetail/VCS/1960",
-        name: "Northern Great Plains Regenerative Grazing",
-        criteriaFit: ["Value-chain states: MT · ID · WA", "Removal credits", "Rated A (BeZero)"],
-        location: "Montana (plus WY, ID, WA, ND, SD)", theme: "Regenerative agriculture",
-        creditType: "Removal", methodology: "Sustainable grazing management (SNAPGRAZE-modeled)",
-        verifier: "Aster Global Environmental Solutions", rating: "A (BeZero)",
-        tonnes: 2000, priceBand: "$20–25/t",
-        story: "Ranchers across the Northern Great Plains — Montana barley country — adopt adaptive multi-paddock grazing that restores degraded grasslands, rebuilds soil health, and pulls carbon into the ground. The same landscapes that grow brewing barley.",
-        risks: "Soil-carbon models (SNAPGRAZE) validated against ranch records and GIS analysis; removal permanence managed through buffer pool.",
-      },
-      {
-        id: "ACR745", registry: "American Carbon Registry", registryShort: "ACR",
-        registryUrl: "https://acr2.apx.com/",
-        name: "Northern Cheyenne Forest Carbon Project",
-        criteriaFit: ["Value-chain state: MT", "CCP Approved", "Removal (IFM)", "100% Tribal-owned"],
-        location: "Northern Cheyenne Reservation, Montana", theme: "Community & Indigenous stewardship",
-        creditType: "Removal (IFM)", methodology: "ACR Improved Forest Management",
-        verifier: "Per ACR listing", rating: "CCP Approved",
-        tonnes: 1500, priceBand: "$15–20/t",
-        story: "90,433 acres of 100% Tribal-owned ponderosa pine forest managed for carbon, drought and fire resilience — income that stays with the Northern Cheyenne community.",
-        risks: "IFM baseline risk mitigated by CCP approval and conservative harvest-deferral accounting.",
-      },
-      {
-        id: "CAR 866", registry: "Climate Action Reserve", registryShort: "CAR",
-        registryUrl: "https://thereserve2.apx.com/",
-        name: "Cedar Grove – Maple Valley Composting",
-        criteriaFit: ["Value-chain state: WA", "Non-renewable project type", "Food-waste circularity"],
-        location: "Maple Valley, Washington", theme: "Food-waste circularity",
-        creditType: "Avoidance", methodology: "CAR Organic Waste Composting",
-        verifier: "Agri-Waste Technology", rating: "—",
-        tonnes: 1500, priceBand: "$10–15/t",
-        story: "Food waste and food-soiled paper composted aerobically instead of landfilled — avoided methane in a value-chain state, and a natural story for a company that turns grain into beer and spent grain into cattle feed.",
-        risks: "Continuous monitoring of temperature, oxygen, and waste sourcing at the facility.",
-      },
-      {
-        id: "ACR 1114", registry: "American Carbon Registry", registryShort: "ACR",
-        registryUrl: "https://acr2.apx.com/",
-        name: "Advanced Refrigeration (ARS2023007)",
-        criteriaFit: ["Home state: CO", "Brewery-relevant technology", "Recent vintage (2024)"],
-        location: "Windsor & Commerce City, Colorado (plus PA, VA, MN)", theme: "Refrigeration technology",
-        creditType: "Avoidance", methodology: "ACR Advanced Refrigeration Systems",
-        verifier: "TÜV SÜD America", rating: "—",
-        tonnes: 2000, priceBand: "$10–15/t",
-        story: "Cold-storage facilities — including two in New Belgium's home state — built with ultra-low-GWP CO₂ and ammonia refrigeration instead of HFC systems. Refrigeration is a brewery's language.",
-        risks: "10-year crediting period; avoided first-fill, service, and end-of-life HFC emissions quantified per ACR methodology.",
-      },
-      {
-        id: "CAR 560", registry: "Climate Action Reserve", registryShort: "CAR",
-        registryUrl: "https://thereserve2.apx.com/",
-        name: "New River Landfill Gas (LFG to Energy)",
-        criteriaFit: ["Value-chain state: VA", "CCP Approved", "Price-balanced"],
-        location: "Dublin, Virginia", theme: "Methane destruction",
-        creditType: "Avoidance", methodology: "CAR U.S. Landfill Protocol",
-        verifier: "SCS Global", rating: "CCP Approved",
-        tonnes: 2500, priceBand: "$5–10/t",
-        story: "Landfill gas captured and destroyed in twelve generators and a flare in Virginia — a value-chain state. Continuously metered methane destruction: the cost-effective workhorse of the portfolio.",
-        risks: "Robust MRV: continuous flow metering, weekly data collection, regular calibration.",
-      },
-      {
-        id: "ACR 222", registry: "American Carbon Registry", registryShort: "ACR",
-        registryUrl: "https://acr2.apx.com/",
-        name: "Prairie Pothole Avoided Grassland Conversion",
-        criteriaFit: ["Rated AA (BeZero)", "Permanent easements", "USA"],
-        location: "North Dakota", theme: "Native prairie protection",
-        creditType: "Avoidance", methodology: "ACR Avoided Conversion of Grasslands and Shrublands",
-        verifier: "SCS Global Services", rating: "AA (BeZero)",
-        tonnes: 500, priceBand: "$20–30/t",
-        story: "Native grasslands across 74 parcels protected by permanent conservation easements — soil carbon kept in the ground and duck-country habitat kept wild. One of the highest-rated projects in the U.S. market.",
-        risks: "Permanence secured by perpetual easements with sodbusting restrictions, monitored by the U.S. Fish & Wildlife Service.",
-      },
+      { key: "s16", tonnes: 2000, role: "Anchor removal",
+        why: "Ranchers across Montana barley country adopt adaptive multi-paddock grazing that rebuilds soil and pulls carbon down. The same landscapes that grow brewing barley.",
+        fits: ["Value-chain states", "Removals", "BeZero A"] },
+      { key: "s17", tonnes: 1500, role: "Community removal",
+        why: "90,433 acres of Tribal-owned ponderosa pine managed by the Northern Cheyenne Nation for carbon, drought, and fire resilience. Revenue stays with the community.",
+        fits: ["Value-chain state", "ICVCM CCP", "Removals"] },
+      { key: "s11", tonnes: 2000, role: "Home-state technology",
+        why: "Cold storage built with ultra-low-GWP carbon dioxide and ammonia refrigeration instead of HFC systems, including two Colorado sites. Refrigeration is a language your engineers already speak.",
+        fits: ["Home state", "Recent vintage"] },
+      { key: "s12", tonnes: 2500, role: "Cost-effective core",
+        why: "Landfill gas captured and destroyed in Virginia, a value-chain state, with continuous metering. The workhorse that keeps blended cost inside the band.",
+        fits: ["Value-chain state", "ICVCM CCP", "Continuously metered"] },
+      { key: "s14", tonnes: 1500, role: "Circularity story",
+        why: "Food waste composted aerobically instead of landfilled in Washington. A natural fit for a company that already sends spent grain to cattle feed.",
+        fits: ["Value-chain state", "Waste diversion"] },
+      { key: "s24", tonnes: 500, role: "Highest-rated",
+        why: "Native prairie across 74 parcels held under permanent conservation easements. One of the highest-rated projects in the United States market.",
+        fits: ["BeZero AA", "Permanent easements"] },
     ],
-    alternatives: "Selected from a 26-project curated catalogue spanning HFC replacement, advanced refrigeration, soil carbon, improved forest management, landfill gas, composting, N₂O abatement, and energy demand. Rejected for this mix: renewable-energy credits (excluded by criteria), lowest-cost HFC replacement as the majority sleeve (continuity option retained as an alternative), and international projects outside North America (geography criterion).",
-  },
-
-  // ---------- REAL peer comps (public registry data) ----------
-  peerComps: [
-    { buyer: "BrewDog", detail: "450,000 t from the Darkwoods Forest Carbon Project (Verra), 2020–21 — the largest craft-brewery retirement on record, and the same project offered in New Belgium's CarbonBetter catalogue.", tonnes: 450000, segment: "Craft brewer" },
-    { buyer: "Coca-Cola Europacific Partners", detail: "49,635 t of forestry and peatland credits (Verra), 2022–23 — Katingan Peatland and Rimba Raya.", tonnes: 49635, segment: "Beverage" },
-    { buyer: "China Resources Snow Breweries", detail: "21,564 t from a composting project (Verra), 2026 — the world's largest beer producer by volume buying waste-stream credits.", tonnes: 21564, segment: "Brewer" },
-    { buyer: "Keurig (Canada)", detail: "15,357 t of forestry and shade coffee/cacao reforestation credits (Verra), 2021–25.", tonnes: 15357, segment: "Beverage" },
-    { buyer: "New Belgium Brewing", detail: "15,597 t retired to date across ACR and Verra (2021–2025), anchored by the Fat Tire and Mountain Time carbon-neutral program.", tonnes: 15597, segment: "You", you: true },
-    { buyer: "Diageo", detail: "12,907 t of grassland and afforestation credits (Verra), 2021–24 — including the Guoluo Grassland Sustainable Management Project.", tonnes: 12907, segment: "Beverage & spirits" },
-    { buyer: "Red Bull", detail: "12,252 t of cookstove and wind credits (Gold Standard), 2023.", tonnes: 12252, segment: "Beverage" },
-    { buyer: "Tsingtao Brewery", detail: "≈8,500 t across group entities (Verra), 2024–25 — wind and afforestation.", tonnes: 8500, segment: "Brewer" },
-  ],
-
-  // ---------- Evidence Vault ----------
-  vault: {
-    // Real records + proposed forward records (clearly marked)
-    retirements: [
-      { status: "Retired", real: true,  date: "2025-08-29", registry: "ACR", serial: "Registry-verified · ACR992 · 2023 vintage", project: "HT HFC Reclamation Project Champaign 2023", tonnes: 10000, purpose: "CY24 + CY25 Fat Tire Ale and Mountain Time Lager emissions" },
-      { status: "Retired", real: true,  date: "2024-12-20", registry: "ACR", serial: "Registry-verified · ACR847 · 2022 vintage", project: "HT HFC Reclamation Project Champaign 2022", tonnes: 5000, purpose: "CY23 Fat Tire Ale and Mountain Time Lager emissions" },
-      { status: "Retired", real: true,  date: "2021-03-30", registry: "Verra", serial: "Registry-verified · VCS 756", project: "Crow Lake Wind Emissions Reduction Project", tonnes: 597, purpose: "Retired on behalf of New Belgium Brewing Company" },
-      { status: "Proposed", real: false, date: "2026 Q4 (planned)", registry: "Verra", serial: "Assigned at retirement", project: "Northern Great Plains Regenerative Grazing (VCS 1960)", tonnes: 2000, purpose: "CY26 program — regenerative agriculture sleeve" },
-      { status: "Proposed", real: false, date: "2026 Q4 (planned)", registry: "ACR / CAR", serial: "Assigned at retirement", project: "Remaining 2026–27 portfolio (5 projects)", tonnes: 8000, purpose: "CY26 program — per allocation in Plan & Decide" },
-    ],
-    contracts: [
-      { sample: true, counterparty: "CarbonBetter (buyer's agent)", scope: "2026–27 portfolio · 10,000 t across 6 projects", status: "Draft", terms: "Delivery vs. payment on retirement; replacement rights on under-delivery; vintage and volume per allocation table." },
-      { sample: true, counterparty: "Project sleeves (via CarbonBetter network)", scope: "Spot purchase, current vintages", status: "Pending approval", terms: "Firm quotes per the confidential catalogue; price bands shown here are indicative." },
-    ],
-    auditTrail: [
-      { sample: true, date: "2026-08-14", actor: "Sustainability Lead", action: "Portfolio recommendation accepted for internal review" },
-      { sample: true, date: "2026-08-21", actor: "Legal Counsel", action: "Claims language pack approved with two edits (see Legal & Claims)" },
-      { sample: true, date: "2026-08-28", actor: "CFO", action: "Budget band approved for FY26–27" },
-      { sample: true, date: "2026-09-04", actor: "CEO", action: "Program renewal signed off" },
-    ],
-    claims: [
-      { claim: "Fat Tire and Mountain Time are part of our carbon-neutral program", status: "Substantiated", evidence: "10,000 t (2025) and 5,000 t (2024) registry retirements explicitly designated for these brands — public ACR records." },
-      { claim: "Our 2026 portfolio invests in regenerative agriculture in barley country", status: "Ready when retired", evidence: "VCS 1960 allocation (2,000 t) + retirement certificate on completion; approved wording in Marketing Kit." },
-      { claim: "We support Tribal-led forest stewardship", status: "Ready when retired", evidence: "ACR745 allocation (1,500 t), 100% Tribal-owned project; wording reviewed by Legal." },
-      { claim: "\"We are a carbon-neutral company\"", status: "Not approved", evidence: "Company-wide neutrality claim exceeds current program scope — brand-level claims only. See guardrails." },
+    setAside: [
+      { what: "The HFC replacement sleeve", why: "Your current program runs on industrial gas projects at $2 to $3 per tonne. Keeping it would have held cost down, but it concentrates the entire program in one project type and gives marketing nothing new to say. Retained as a continuity option." },
+      { what: "Darkwoods Forest Carbon Project", why: "The strongest forestry project in the catalogue, and the one BrewDog used for 450,000 tonnes. Set aside to respect your stated limit on forestry exposure, not on quality grounds." },
+      { what: "International projects", why: "Excluded by the geography criterion before assessment, which removes most of the market by volume." },
     ],
   },
 
-  // ---------- Share views ----------
+  // ---------------------------------------------------------------- Benchmark
+  benchmark: {
+    headline: "You are already in the top decile of your industry, buying a project type your industry does not buy.",
+    intro: "Derived from our merged registry dataset: 207,881 retirements across Verra, Gold Standard, the American Carbon Registry, the Climate Action Reserve, and Isometric. Every buyer named below disclosed their retirement publicly.",
+    stats: [
+      { num: "7th", of: "of 74", label: "Your rank among beverage and brewing buyers by volume retired" },
+      { num: "693 t", of: "median", label: "What a typical beverage buyer retires in total. You have retired 15,597." },
+      { num: "1.00 Mt", of: "total", label: "Retired by the beverage and brewing sector across the public registries" },
+    ],
+    peers: [
+      { buyer: "BrewDog", tonnes: 450000, note: "A single forestry position: 450,000 tonnes from Darkwoods, which is also in your catalogue. An outlier, and a cautionary one, given the scrutiny that followed their carbon-negative claim." },
+      { buyer: "Coca-Cola Europacific Partners", tonnes: 49635, note: "Forestry and peatland, 2022 to 2023." },
+      { buyer: "China Resources Snow Breweries", tonnes: 21564, note: "The world's largest brewer by volume, buying composting credits in 2026." },
+      { buyer: "Keurig (Canada)", tonnes: 15357, note: "Forestry and shade-grown coffee reforestation." },
+      { buyer: "New Belgium Brewing", tonnes: 15597, note: "Industrial process emissions, tied explicitly to Fat Tire and Mountain Time.", you: true },
+      { buyer: "Diageo", tonnes: 12907, note: "Grassland and afforestation." },
+      { buyer: "Red Bull", tonnes: 12252, note: "Cookstoves and wind." },
+      { buyer: "Tsingtao Brewery", tonnes: 8500, note: "Wind and afforestation across group entities." },
+    ],
+    mix: {
+      intro: "What the beverage sector actually buys, by tonnage:",
+      items: [
+        { type: "Forestry and land use", share: 60 },
+        { type: "Livestock and manure management", share: 15 },
+        { type: "Energy industries", share: 11 },
+        { type: "Solar thermal", share: 9 },
+        { type: "Industrial process emissions", share: 2 },
+      ],
+      insight: "Your industry buys forestry. You buy industrial gas. That has been a defensible position on quality grounds, since metered industrial destruction carries less uncertainty than modelled forest carbon. It is a weaker position on story, and it leaves you exposed to the criticism that your credits have nothing to do with beer. The proposed portfolio moves you toward the landscapes in your supply chain without abandoning the metered core.",
+    },
+  },
+
+  // -------------------------------------------------------------------- Share
   share: {
-    updated: "August 3, 2026",
-    marketing: {
-      approved: [
-        { use: "Brand claim", text: "Fat Tire and Mountain Time emissions are addressed through verified carbon credits, retired on public registries you can check yourself." },
-        { use: "Portfolio story", text: "Our carbon portfolio invests where we live and brew: regenerative grazing in Montana barley country, Tribal-led forestry, and methane destruction in our value-chain states." },
-        { use: "Social copy", text: "Every credit we retire has a name, a serial number, and a public record. That's the point. 🍺🌾" },
-      ],
-      guardrails: [
-        { dont: "\"We are carbon neutral\" (company-wide)", do: "\"Fat Tire and Mountain Time are part of our carbon-neutral program\" — brand-scoped, registry-backed." },
-        { dont: "\"Our credits remove carbon\" (portfolio-wide)", do: "\"Our portfolio includes removal credits from regenerative grazing and forestry\" — 35% of the proposed mix is removals; say which." },
-        { dont: "\"Offsetting makes our beer zero-impact\"", do: "Credits complement reduction work; lead with brewery efficiency and packaging progress, then the portfolio." },
-      ],
-      stories: "Each portfolio project ships with a 100-word story, location, and co-benefit summary (see project cards) cleared for packaging inserts, web, and social.",
+    intro: "Two audiences, two moments. Before the purchase you need approval. After it you need to explain what you did without overstating it. Both are generated from the same portfolio record.",
+    presale: [
+      { id: "exec", role: "Executives", title: "Executive one-pager", blurb: "Spend, volume, risk posture, where you stand against peers, and why this portfolio." },
+      { id: "finance", role: "Finance and accounting", title: "Finance pack", blurb: "Budget band, allocation, price context, and what was considered and set aside." },
+      { id: "legal", role: "Legal and compliance", title: "Legal and claims pack", blurb: "Approved wording, what may not be said, disclosure readiness, and the evidence behind each claim." },
+    ],
+    postsale: [
+      { id: "marketing", role: "Marketing and communications", title: "Marketing kit", blurb: "Approved claims, project stories, and the guardrails that keep them safe." },
+      { id: "employee", role: "Everyone", title: "Employee page", blurb: "What we did and why it is real, in plain language, with an FAQ." },
+      { id: "records", role: "Anyone who asks", title: "Retirement records", blurb: "The public registry records behind every claim, with serials and purpose." },
+    ],
+    exec: {
+      narration: "We kept the discipline that built the Fat Tire program: every tonne verified, every retirement public. What changes this cycle is the story. Instead of one industrial project type, this portfolio puts nearly 80% of spend into the landscapes our beer comes from, and adds independently top-rated projects that survive legal review of every claim we want to make. Blended cost stays inside the band finance approved, with 35% of volume in removals rather than avoidance alone.",
+      risk: "Six projects across five states and three registries. No single project exceeds 25% of volume. Three of six carry ICVCM Core Carbon Principles approval or an A or AA rating. Removals are 35% of volume.",
+      renewal: "Current run rate is roughly 5,000 tonnes a year for the brand programs. This proposal covers 2026 to 2027 with an annual review each August.",
     },
     legal: {
       checklist: [
-        { item: "California AB 1305 disclosure (voluntary carbon market disclosures)", status: "Template ready", note: "Project name, registry, ID, type, and vintage for every retirement — auto-compiled from the vault." },
-        { item: "FTC Green Guides review of claim wording", status: "In review", note: "All approved phrasings routed through Legal; banned phrasings documented." },
-        { item: "Claim-to-evidence map", status: "Live", note: "Every public claim links to registry records in the Evidence Vault." },
-        { item: "Approval history", status: "Live", note: "Who approved which wording, when — preserved for audit." },
+        { item: "California Assembly Bill 1305 disclosure", status: "Template ready", note: "Project name, registry, identifier, type, and vintage for every retirement, compiled from the records." },
+        { item: "Green Guides review of claim wording", status: "In review", note: "Approved phrasings and banned phrasings both documented." },
+        { item: "Claim-to-evidence map", status: "Live", note: "Every public claim links to the registry record that substantiates it." },
       ],
-      note: "Registry details for every holding (registry, project ID, methodology, vintage, serials) are maintained in the Evidence Vault and exportable for counsel.",
+      claims: [
+        { claim: "Fat Tire and Mountain Time are part of our carbon-neutral program", status: "Substantiated", evidence: "10,000 tonne and 5,000 tonne registry retirements naming these brands explicitly. Public ACR records." },
+        { claim: "Our portfolio invests in regenerative agriculture in barley country", status: "Ready on retirement", evidence: "2,000 tonne allocation to the Northern Great Plains project, with certificate on completion." },
+        { claim: "We support Tribal-led forest stewardship", status: "Ready on retirement", evidence: "1,500 tonne allocation to a 100% Tribal-owned project." },
+        { claim: "We are a carbon-neutral company", status: "Not approved", evidence: "Company-wide neutrality exceeds the program's scope. Brand-level claims only." },
+      ],
     },
-    finance: {
-      budgetBand: "$120k–$160k for 10,000 t (2026–27) — indicative; firm quotes in the confidential catalogue.",
-      allocation: true, // rendered from portfolio.projects
-      schedule: [
-        { sample: true, milestone: "Contract execution", timing: "On approval", amount: "—" },
-        { sample: true, milestone: "Delivery & retirement (tranche 1)", timing: "2026 Q4", amount: "≈60% of program" },
-        { sample: true, milestone: "Delivery & retirement (tranche 2)", timing: "2027 Q2", amount: "remainder" },
+    marketing: {
+      approved: [
+        { use: "Brand claim", text: "Fat Tire and Mountain Time emissions are addressed through verified carbon credits, retired on public registries you can check yourself." },
+        { use: "Portfolio story", text: "Our carbon portfolio invests where we brew and where we source: regenerative grazing in Montana barley country, Tribal-led forestry, and methane capture in our value-chain states." },
+        { use: "Social", text: "Every credit we retire has a name, a serial number, and a public record. That is the point." },
       ],
-      audit: "Every dollar maps to a registry-verified retirement record in the Evidence Vault — auditors get serials, dates, and certificates, not a spreadsheet reconstruction.",
-      alternatives: true, // rendered from portfolio.alternatives
+      guardrails: [
+        { dont: "We are carbon neutral", do: "Fat Tire and Mountain Time are part of our carbon-neutral program. Brand-scoped, registry-backed." },
+        { dont: "Our credits remove carbon", do: "Our portfolio includes removal credits from regenerative grazing and forestry. 35% of volume is removals. Say which." },
+        { dont: "Offsetting makes our beer zero-impact", do: "Lead with brewery efficiency and packaging progress, then the portfolio. Credits complete the work, they do not replace it." },
+      ],
     },
     employee: {
-      headline: "What we did, and why it's real",
       body: [
-        "Beer starts with barley, water, and hops — all of it grown in a climate we can't take for granted. We cut our own emissions first: brewery efficiency, renewable electricity, lighter packaging. For the emissions that remain on Fat Tire and Mountain Time, we buy carbon credits — and not the sketchy kind.",
-        "Every credit we buy is verified by an independent registry, has a public serial number, and gets 'retired' — permanently taken off the market — in our name. You can look our retirements up yourself on the American Carbon Registry and Verra. Since 2021 we've retired more than 15,000 tonnes.",
+        "Beer starts with barley, water, and hops, all of it grown in a climate we cannot take for granted. We cut our own emissions first: brewery efficiency, renewable electricity, lighter packaging. For the emissions that remain on Fat Tire and Mountain Time, we buy carbon credits, and not the sketchy kind.",
+        "Every credit we buy is verified by an independent registry, carries a public serial number, and is retired, meaning permanently taken off the market, in our name. You can look our retirements up yourself. Since 2021 we have retired more than 15,000 tonnes.",
         "Our next portfolio invests close to home: ranchers in Montana barley country rebuilding soil, the Northern Cheyenne Nation managing their own forest, food-waste composting in Washington, and methane capture in Virginia.",
       ],
       faq: [
-        { q: "Are carbon credits just paying to pollute?", a: "No — they come after reduction work, not instead of it. And ours are verified, serial-numbered, and public." },
-        { q: "How do I know the projects are real?", a: "Every retirement has a public registry record. Ask the sustainability team for the link — or check the Evidence Vault." },
-        { q: "Can I say our beer is carbon neutral?", a: "Say Fat Tire and Mountain Time are part of our carbon-neutral program. Don't say the whole company is carbon neutral." },
-        { q: "Why these projects?", a: "They're in the places we brew and source — Montana, Colorado, Washington, Virginia — and they're independently rated." },
-        { q: "What does 'retired' mean?", a: "A retired credit is permanently cancelled on the registry so nobody else can claim it. It's the carbon equivalent of burning the ticket stub." },
+        { q: "Are carbon credits just paying to pollute?", a: "They come after reduction work, not instead of it. Ours are verified, serial-numbered, and public." },
+        { q: "How do I know the projects are real?", a: "Every retirement has a public registry record. The Retirement records page lists them." },
+        { q: "Can I say our beer is carbon neutral?", a: "Say Fat Tire and Mountain Time are part of our carbon-neutral program. Do not say the whole company is carbon neutral." },
+        { q: "Why these projects?", a: "They are in the places we brew and source, and they are independently rated." },
+        { q: "What does retired mean?", a: "A retired credit is permanently cancelled on the registry so nobody else can claim it." },
       ],
     },
-    exec: {
-      kpis: true, // rendered from portfolio + history
-      narration: {
-        title: "Why we chose these credits — Sustainability Lead",
-        text: "We kept the discipline that built the Fat Tire program: every tonne verified, every retirement public. What changes this cycle is the story. Instead of a single industrial project type, this portfolio puts nearly 80% of our spend into the landscapes our beer comes from — Montana grazing land, Tribal forest, Washington composting, Colorado cold storage — and adds independently top-rated projects (BeZero A and AA, ICVCM CCP-approved) that survive legal review of every claim we want marketing to make. Blended cost stays inside the band finance approved, with 35% of the volume in removals rather than avoidance only.",
-      },
-      risk: "Portfolio risk posture: 6 projects across 5 states and 3 registries; 35% removals; 3 of 6 holdings CCP-approved or A/AA-rated; no single project exceeds 25% of volume.",
-      renewal: "Renewal outlook: current run-rate ≈5,000 t/yr retired for brand programs; proposed program covers 2026–27 with an annual review gate each August.",
-    },
-  },
-
-  // ---------- Plan & Decide (teaser) ----------
-  plan: {
-    stages: ["Define criteria", "Recommend portfolio", "Diligence", "Approve", "Purchase & retire", "Report & share", "Renew"],
-    note: "Plan & Decide is where the next purchase cycle starts: criteria in, recommended portfolio out, with rationale and trade-offs documented. This demo shows the criteria and the resulting recommendation; the full scenario workspace is the next stage of Carbon Impact.",
   },
 };

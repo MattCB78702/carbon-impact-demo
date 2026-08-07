@@ -1,3 +1,8 @@
 __pycache__/
 *.pyc
 extract/*.json
+
+# CONFIDENTIAL: real quoted prices from the client catalogue.
+# Must never reach the public GitHub Pages deploy. Present locally = app shows
+# real prices; absent = app shows bands only.
+js/prices.local.js
